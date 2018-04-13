@@ -1,7 +1,7 @@
-import StateInterface
+from StateInterface import StateInterface
 import inspect
 
-class State(StateInterface.StateInterface):
+class State(StateInterface):
     def getName(self):
         return self.__class__.__name__
     def getNextInputs(self):
