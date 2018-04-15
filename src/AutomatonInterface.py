@@ -24,7 +24,7 @@ class AutomatonInterface(object, metaclass=abc.ABCMeta):
     def move(self, actionName):
         raise NotImplementedError('users must define '+inspect.stack()[0][3]+' to use this base class')
     @abc.abstractmethod
-    def doAction(self, actionName, parms):
+    def doAction(self, actionName, *parms):
         raise NotImplementedError('users must define '+inspect.stack()[0][3]+' to use this base class')
     @abc.abstractmethod
     def setCurrentState(self, state):

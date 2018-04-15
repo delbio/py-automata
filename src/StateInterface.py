@@ -9,7 +9,7 @@ class StateInterface(object, metaclass=abc.ABCMeta):
     def getNextInputs(self):
         raise NotImplementedError('users must define '+inspect.stack()[0][3]+' to use this base class')
     @abc.abstractmethod
-    def getNextiActions(self):
+    def getNextActions(self):
         raise NotImplementedError('users must define '+inspect.stack()[0][3]+' to use this base class')
     @abc.abstractmethod
     def getAction(self, actionName):

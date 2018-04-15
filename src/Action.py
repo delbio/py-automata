@@ -5,9 +5,9 @@ class Action(ActionInterface):
     def __init__(self, originState, targetState = None):
         self._originState = originState
         if targetState is None:
-            self._tagetState = targetState
+            self._targetState = originState
         else:
-            self._tagetState = targetState
+            self._targetState = targetState
         if originState is None:
             raise ValueError(self.__class__.__name__ + ' must have originState set')            
     def getName(self):
