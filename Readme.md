@@ -29,3 +29,11 @@ https://stackoverflow.com/a/511060/3753724
 wget https://www.gitignore.io/api/python -O .gitignore
 wget https://www.gitignore.io/api/vim -O ->> .gitignore
 ```
+
+## Come usare le variabili all'interno di una classe
+
+https://stackoverflow.com/a/5690920/3753724
+
+## Python null equivalent
+
+https://www.pythoncentral.io/python-null-equivalent-none/
