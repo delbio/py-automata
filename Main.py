@@ -28,14 +28,20 @@ def main():
 
     automaton = Automaton()
     for s in [nuovo,cancellato,pubblicabile,pubblicato]:
+        print(s)
         automaton.addState(s)
     automaton.addEnd(cancellato)
     automaton.setBegin(nuovo)
 
     automaton.checkIntegrity()
     automaton.setCurrentState(nuovo)
+    print(automaton)
+    print(automaton.getCurrentState())
     for a in ['Modifica', 'Pubblica', 'Modifica', 'Modifica', 'Elimina']:
+        print(a)
         automaton.doAction(a)
         automaton.move(a)
+        print(automaton.getCurrentState())
+
 if __name__ == "__main__":
     main()

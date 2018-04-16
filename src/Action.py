@@ -18,4 +18,5 @@ class Action(ActionInterface):
         return self._targetState
     def getOriginState(self):
         return self._originState
- 
+    def __str__(self):
+        return self.getName()+'() -> '+self.getTargetState().__str__()

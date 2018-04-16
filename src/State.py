@@ -21,3 +21,5 @@ class State(StateInterface):
         if action.getName() in self._actionMap:
             raise ValueError("cannot add action "+action.getName()+" to "+self+": state already has an action with the same name")
         self._actionMap[action.getName()] = action
+    def __str__(self):
+        return self.getName()+'[class='+self.__class__.__name__+']'

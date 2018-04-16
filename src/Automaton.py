@@ -16,21 +16,21 @@ class Automaton(AutomatonInterface):
             raise ValueError('invalid argument, end must be passed')
         if self._begin is not None:
             raise ValueError('begin state already defined')
-        if begin not in self._states:
+        if begin not in self._states.values():
             raise ValueError('begin state not declared in the automaton')
         self._begin = begin
     def addEnd(self, end):
         if end is None:
             raise ValueError('invalid argument, end must be passed')
-        if end not in self._states:
+        if end not in self._states.values():
             raise ValueError('end state not declared in the automaton')
         if end in self._end:
             raise ValueError('end state already added')
         self._end.append(end)
     def getEnd(self):
         return self._end
-    def addState(self, action):
-        self._states[action.getName()] = action
+    def addState(self, state):
+        self._states[state.getName()] = state
     def getState(self, name):
         if (name is None):
             raise ValueError('invalid argument, name must be passed')
@@ -38,7 +38,7 @@ class Automaton(AutomatonInterface):
             raise ValueError('name must be a string')
         return self._states[name]
     def getStates(self):
-        return list(self.states.values())
+        return list(self._states.values())
     def getCurrentState(self):
         return self._state
     def move(self, actionName):
@@ -95,3 +95,14 @@ class Automaton(AutomatonInterface):
         for e in self.getStates():
             if len(e.getNextActions()) == 0 and e not in self._end:
                 raise ValueError('state '+e+' is dead-end (has no outgoing actions)')
+    def __str__(self):
+        result = self.getName() + ': state->actions mapping '
+        result += '{ '
+        for s in list(self._states.values()):
+            for a in s.getNextActions():
+                result += s.__str__() + '.' + a.__str__()
+                result += ';'
+            result += ';'
+        result += ' }'
+        return result
+
