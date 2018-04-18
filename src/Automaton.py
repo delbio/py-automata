@@ -98,11 +98,15 @@ class Automaton(AutomatonInterface):
     def __str__(self):
         result = self.getName() + ': state->actions mapping '
         result += '{ '
-        for s in list(self._states.values()):
-            for a in s.getNextActions():
+        states = list(self._states.values())
+        for sidx, s in enumerate(states):
+            for aidx, a in enumerate(s.getNextActions()):
                 result += s.__str__() + '.' + a.__str__()
-                result += ';'
-            result += ';'
+                if (aidx < len(s.getNextActions()) -1 ):
+                    result += ', '
+
+            if (sidx < len(states) -1):
+                result += '; '
         result += ' }'
         return result
 
