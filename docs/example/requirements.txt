@@ -1,0 +1,1 @@
+ git+https://github.com/delbio/py-automata.git#egg=fsm-engine==0.0.4.dev1
