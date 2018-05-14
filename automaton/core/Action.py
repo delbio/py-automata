@@ -1,4 +1,4 @@
-from ActionInterface import ActionInterface
+from automaton.core.ActionInterface import ActionInterface
 import inspect
 
 class Action(ActionInterface):
