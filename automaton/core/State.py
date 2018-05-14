@@ -1,4 +1,4 @@
-from StateInterface import StateInterface
+from automaton.core.StateInterface import StateInterface
 import inspect
 
 class State(StateInterface):

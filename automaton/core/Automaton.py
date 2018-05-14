@@ -1,4 +1,4 @@
-from AutomatonInterface import AutomatonInterface
+from automaton.core.AutomatonInterface import AutomatonInterface
 import inspect
 
 class Automaton(AutomatonInterface):
