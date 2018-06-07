@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Automaton module="" class="">
+    <States>
+        <State module="" name="" type=""></State>
+    </States>
+    <Actions>
+        <Action module="" name="" source="" target="">
+            <Property name="id">value</Property>
+        </Action>
+    </Actions>
+</Automaton>
