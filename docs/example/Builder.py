@@ -9,6 +9,20 @@ def getclass(module_name, class_name):
     module = importlib.import_module(module_name)
     return getattr(module, class_name)
 
+# Manage State Type actions
+
+def setBegin(a, s, t):
+    a.setBegin(s)
+
+def addEnd(a, s, t):
+    a.addEnd(s)
+
+def nop(a, s, t):
+    pass
+
+def unknownStateType(a, s, t):
+    raise ValueError("state type unknown: " + t ) 
+    
 class Builder():
     def __init__(self):
         pass
@@ -16,19 +30,18 @@ class Builder():
     def newObjectFromXmlElement(self, element):
         automaton = getClassFromElement(element)()
 
+        switcher = {
+            'BEGIN': setBegin,
+            'END': addEnd,
+            '-': nop,
+        }
+
         stateNodes = element.findall('States/State');
         for stateElement in stateNodes:
             state = getClassFromElement(stateElement)()
             automaton.addState(state)
-            switcher = {
-                    'BEGIN': automaton.setBegin(state),
-                    'END': automaton.addEnd(state),
-                    '-': None,
-            }
             stateType = stateElement.attrib['type']
-            if stateType not in switcher:
-                raise ValueError("state type unknown: " + stateType ) 
-            switcher.get(stateType, 'not founded' )
+            switcher.get(stateType, unknownStateType )(automaton, state, stateType)
 
         actionNodes = element.findall('Actions/Action')
         for actionElement in actionNodes:
