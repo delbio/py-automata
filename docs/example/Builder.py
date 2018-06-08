@@ -54,5 +54,4 @@ class Builder():
 
         automaton.setCurrentState(automaton.getBegin())
         automaton.checkIntegrity()
-        print('instance', automaton.__str__())
         return automaton

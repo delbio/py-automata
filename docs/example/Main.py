@@ -18,49 +18,22 @@ def build_from_xml(filepath):
     builder = Builder()
     root = parse(filepath).getroot()
     automaton = builder.newObjectFromXmlElement(root)
+    print('Loaded Automaton: \n', automaton.__str__())
     runner(automaton)
 
-
 def runner(automaton):
-    print(automaton)
-    print(automaton.getCurrentState())
+    print('Start from:\t', automaton.getCurrentState())
     while not automaton.isFinished():
         nextInputs = automaton.getCurrentState().getNextInputs()
-        print("next inputs: " + ','.join(list(nextInputs)))
+        print("\tNext inputs:\t" + ', '.join(list(nextInputs)))
         actionName = None
         if len(nextInputs) == 1:
             actionName = nextInputs[0]
         else:
-            actionName = input('user must select an action: ' + ''.join(list(nextInputs)))
+            actionName = input('User must select an action: ' + ', '.join(list(nextInputs)) + ' : ')
         automaton.doAction(actionName)
         automaton.move(actionName)
-        print(automaton.getCurrentState())
-
-
-def main_fsm():
-    # create state instances
-    notstarted = NotStarted()
-    copiedFile = CopiedFile()
-    generatedTextFile = GeneratedTextFile()
-    exitChecked = ExitChecked()
-    # create state/action graph
-    notstarted.addAction(actions.CopyFile.CopyFile(notstarted, copiedFile))
-    copiedFile.addAction(Action(copiedFile))
-    copiedFile.addAction(actions.GenerateTextFile.GenerateTextFile(copiedFile, generatedTextFile))
-    generatedTextFile.addAction(actions.CheckExit.CheckExit(generatedTextFile, exitChecked))
-
-    automaton = Automaton()
-    for s in [notstarted, copiedFile, generatedTextFile, exitChecked]:
-        print(s)
-        automaton.addState(s)
-    automaton.addEnd(exitChecked)
-    automaton.setBegin(notstarted)
-
-    automaton.checkIntegrity()
-    automaton.setCurrentState(notstarted)
-    runner(automaton)
-
+        print('Current State:\t',automaton.getCurrentState())
 
 if __name__ == "__main__":
-    # main_fsm()
     build_from_xml('config.xml')
