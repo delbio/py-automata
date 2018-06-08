@@ -17,10 +17,11 @@ import xml.etree.ElementTree as ET
 def build_from_xml(filepath):
     builder = Builder()
     root = parse(filepath).getroot()
-    automata = builder.newObjectFromXmlElement(root)
-    runner(automata)
+    automaton = builder.newObjectFromXmlElement(root)
+    runner(automaton)
 
-def runner(automata):
+
+def runner(automaton):
     print(automaton)
     print(automaton.getCurrentState())
     while not automaton.isFinished():
@@ -57,8 +58,9 @@ def main_fsm():
 
     automaton.checkIntegrity()
     automaton.setCurrentState(notstarted)
-    runner(automata)
+    runner(automaton)
+
 
 if __name__ == "__main__":
-    #main_fsm()
-    build_from_xml('config.xml');
+    # main_fsm()
+    build_from_xml('config.xml')

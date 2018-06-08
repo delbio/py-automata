@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Automaton module="automaton.core" name="Automaton">
+<Automaton module="automaton.core.Automaton" name="Automaton">
     <States>
         <State module="States" name="NotStarted" type="BEGIN" />
         <State module="States" name="CopiedFile" type="-" />
@@ -7,11 +7,11 @@
         <State module="States" name="ExitChecked" type="END" />
     </States>
     <Actions>
-        <Action module="actions" name="CopyFile" source="NotStarted" target="CopiedFile">
+        <Action module="actions.CopyFile" name="CopyFile" source="NotStarted" target="CopiedFile">
             <Property name="filepath">ciao.txt</Property>
         </Action>
-        <Action module="automaton.core" name="Action" source="CopiedFile" target="CopiedFile" />
-        <Action module="actions" name="GenerateTextFile" source="CopiedFile" target="GeneratedTextFile" />
-        <Action module="actions" name="CheckExit" source="GeneratedTextFile" target="ExitChecked" />
+        <Action module="automaton.core.Action" name="Action" source="CopiedFile" target="CopiedFile" />
+        <Action module="actions.GenerateTextFile" name="GenerateTextFile" source="CopiedFile" target="GeneratedTextFile" />
+        <Action module="actions.CheckExit" name="CheckExit" source="GeneratedTextFile" target="ExitChecked" />
     </Actions>
 </Automaton>

@@ -18,9 +18,7 @@ class Builder():
 
         stateNodes = element.findall('States/State');
         for stateElement in stateNodes:
-            print('founded', stateElement.tag, stateElement.attrib)
             state = getClassFromElement(stateElement)()
-            print('instance', state.getName(), state.__str__())
             automaton.addState(state)
             switcher = {
                     'BEGIN': automaton.setBegin(state),
@@ -33,13 +31,11 @@ class Builder():
             switcher.get(stateType, 'not founded' )
 
         actionNodes = element.findall('Actions/Action')
-        for actionElement in actionsNodes:
-            print('founded', actionElement.tag, actionElement.attrib)
+        for actionElement in actionNodes:
             sourceState = automaton.getState(actionElement.attrib['source'])
             targetState = automaton.getState(actionElement.attrib['target'])
 
             action = getClassFromElement(actionElement)(sourceState, targetState)
-            print('instance', action.getName(), action.__str__())
             sourceState.addAction(action)
 
 
