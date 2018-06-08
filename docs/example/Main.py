@@ -2,12 +2,38 @@ import sys
 
 from automaton.core.Action import Action
 from automaton.core.Automaton import Automaton
+from Builder import Builder
 
 sys.path.append('./actions')
 import actions.CopyFile
 import actions.GenerateTextFile
 import actions.CheckExit
 from States import CopiedFile, NotStarted, GeneratedTextFile, ExitChecked
+
+from defusedxml.ElementTree import fromstring, parse
+import xml.etree.ElementTree as ET
+
+
+def build_from_xml(filepath):
+    builder = Builder()
+    root = parse(filepath).getroot()
+    automata = builder.newObjectFromXmlElement(root)
+    runner(automata)
+
+def runner(automata):
+    print(automaton)
+    print(automaton.getCurrentState())
+    while not automaton.isFinished():
+        nextInputs = automaton.getCurrentState().getNextInputs()
+        print("next inputs: " + ','.join(list(nextInputs)))
+        actionName = None
+        if len(nextInputs) == 1:
+            actionName = nextInputs[0]
+        else:
+            actionName = input('user must select an action: ' + ''.join(list(nextInputs)))
+        automaton.doAction(actionName)
+        automaton.move(actionName)
+        print(automaton.getCurrentState())
 
 
 def main_fsm():
@@ -31,20 +57,8 @@ def main_fsm():
 
     automaton.checkIntegrity()
     automaton.setCurrentState(notstarted)
-    print(automaton)
-    print(automaton.getCurrentState())
-    while not automaton.isFinished():
-        nextInputs = automaton.getCurrentState().getNextInputs()
-        print("next inputs: " + ','.join(list(nextInputs)))
-        actionName = None
-        if len(nextInputs) == 1:
-            actionName = nextInputs[0]
-        else:
-            actionName = input('user must select an action: ' + ''.join(list(nextInputs)))
-        automaton.doAction(actionName)
-        automaton.move(actionName)
-        print(automaton.getCurrentState())
-
+    runner(automata)
 
 if __name__ == "__main__":
-    main_fsm()
+    #main_fsm()
+    build_from_xml('config.xml');

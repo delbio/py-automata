@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Automaton module="" class="">
+<Automaton module="automaton.core" name="Automaton">
     <States>
-        <State module="" name="" type=""></State>
+        <State module="States" name="NotStarted" type="BEGIN" />
+        <State module="States" name="CopiedFile" type="-" />
+        <State module="States" name="GeneratedTextFile" type="-" />
+        <State module="States" name="ExitChecked" type="END" />
     </States>
     <Actions>
-        <Action module="" name="" source="" target="">
-            <Property name="id">value</Property>
+        <Action module="actions" name="CopyFile" source="NotStarted" target="CopiedFile">
+            <Property name="filepath">ciao.txt</Property>
         </Action>
+        <Action module="automaton.core" name="Action" source="CopiedFile" target="CopiedFile" />
+        <Action module="actions" name="GenerateTextFile" source="CopiedFile" target="GeneratedTextFile" />
+        <Action module="actions" name="CheckExit" source="GeneratedTextFile" target="ExitChecked" />
     </Actions>
 </Automaton>
