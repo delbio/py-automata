@@ -1,8 +1,8 @@
-import sys
 from automaton.core.Action import Action
+
 
 class CheckExit(Action):
 
     def execute(self, *arg):
-        print("CheckExit ")
+        print(self.getName()+" with arg: ")
         pass
