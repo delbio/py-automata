@@ -101,16 +101,16 @@ class Automaton(AutomatonInterface):
         if b is None:
             raise ValueError('automaton has not initial state')
         if len(b.getNextActions()) == 0 and b in self._end:
-            raise ValueError('initial state ' + b + ' is a dead-end (has no outgoing action)')
+            raise ValueError('initial state ' + b.__str__() + ' is a dead-end (has no outgoing action)')
         el = self.getEnd()
         if len(el) == 0:
             raise ValueError('automaton has no end state')
         for e in el:
             if len(e.getNextActions()) > 0 and e != b:
-                raise ValueError('end state ' + e + ' must be a dead-end (must not have outgoing actions)')
+                raise ValueError('end state ' + e.__str__() + ' must be a dead-end (must not have outgoing actions)')
         for e in self.getStates():
             if len(e.getNextActions()) == 0 and e not in self._end:
-                raise ValueError('state ' + e + ' is dead-end (has no outgoing actions)')
+                raise ValueError('state ' + e.__str__() + ' is dead-end (has no outgoing actions)')
 
     def __str__(self):
         result = self.getName() + ': state->actions mapping '
