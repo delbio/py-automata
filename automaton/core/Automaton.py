@@ -64,7 +64,7 @@ class Automaton(AutomatonInterface):
         s = a.getTargetState()
         self.setCurrentState(s)
 
-    def doAction(self, actionName, *args):
+    def doAction(self, actionName, *args, **kargs):
         if actionName is None:
             raise ValueError('invalid argument, actionName must be passed')
         if not isinstance(actionName, str):
@@ -73,7 +73,7 @@ class Automaton(AutomatonInterface):
         if s is None:
             raise ValueError('current state not selected in the automaton')
         a = s.getAction(actionName)
-        return a.execute(args)
+        return a.execute(*args, **kargs)
 
     def setCurrentState(self, state):
         if len(self._end) == 0:
