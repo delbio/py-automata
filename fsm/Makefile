@@ -16,3 +16,5 @@ clean_build:
 	rm -rf dist/
 	rm -rf *.egg-info
 
+test:
+	python3 -m unittest discover -v fsm "*_test.py"
