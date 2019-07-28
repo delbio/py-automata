@@ -1,7 +1,6 @@
-from fsm.core.StateInterface import StateInterface
+from fsm.core import interfaces as _i
 
-
-class State(StateInterface):
+class State(_i.StateInterface):
     def __init__(self):
         self._actionMap = {}
 

@@ -1,7 +1,6 @@
-from fsm.core.ActionInterface import ActionInterface
+from fsm.core import interfaces as _i
 
-
-class Action(ActionInterface):
+class Action(_i.ActionInterface):
     def __init__(self, originState, targetState=None):
         self._originState = originState
         if targetState is None:

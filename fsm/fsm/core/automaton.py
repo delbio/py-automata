@@ -1,8 +1,6 @@
-from fsm.core.AutomatonInterface import AutomatonInterface
-import inspect
+from fsm.core import interfaces as _i
 
-
-class Automaton(AutomatonInterface):
+class Automaton(_i.AutomatonInterface):
     def __init__(self):
         self._begin = None
         self._end = []
