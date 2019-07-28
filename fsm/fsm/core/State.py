@@ -1,4 +1,4 @@
-from automaton.core.StateInterface import StateInterface
+from fsm.core.StateInterface import StateInterface
 
 
 class State(StateInterface):

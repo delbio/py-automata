@@ -1,4 +1,4 @@
-from automaton.core.ActionInterface import ActionInterface
+from fsm.core.ActionInterface import ActionInterface
 
 
 class Action(ActionInterface):

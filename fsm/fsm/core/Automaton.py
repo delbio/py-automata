@@ -1,4 +1,4 @@
-from automaton.core.AutomatonInterface import AutomatonInterface
+from fsm.core.AutomatonInterface import AutomatonInterface
 import inspect
 
 
