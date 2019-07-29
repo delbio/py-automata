@@ -17,4 +17,4 @@ clean_build:
 	rm -rf *.egg-info
 
 test:
-	python3 -m unittest discover -v fsm "*_test.py"
+	python3 -m unittest discover -v -s fsm/core/tests
