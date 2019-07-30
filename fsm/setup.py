@@ -8,9 +8,9 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='fsm',
+    name='fsm_engine',
     version='0.0.5.dev1',
-    description='Finite State Machine engine',
+    description='Finite State Machine engine implementation',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages= find_packages(
