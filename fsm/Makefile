@@ -17,4 +17,17 @@ clean_build:
 	rm -rf *.egg-info
 
 test:
-	python3 -m unittest discover -v -s fsm/core/tests
+	tox
+
+build_dist:
+	python3 setup.py sdist bdist_wheel
+
+upload_to_test_pypi:
+	twine upload --verbose --repository-url https://test.pypi.org/legacy/ dist/*
+
+publish_to_test_pypi: clean test build_dist upload_to_test_pypi
+
+upload_to_pypi:
+	twine upload --verbose dist/*
+
+publish_to_pypi: clean test build_dist upload_to_pypi
