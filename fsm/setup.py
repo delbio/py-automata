@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='fsm_engine',
-    version='0.1.0.dev2',
+    version='0.1.0.dev3',
     description='Finite State Machine engine implementation',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -23,6 +23,7 @@ setup(
     python_requires='>=3',
     author='Fabio Del Bene',
     author_email='delbio87@gmail.com',
+    license='LICENSE.txt',
     url='https://github.com/delbio/py-automata',
     project_urls={  # Optional
         'Bug Reports': 'https://github.com/delbio/py-automata/issues',
