@@ -10,7 +10,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='fsm_engine',
-    version='0.0.5.dev1',
+    version='0.1.0.dev2',
     description='Finite State Machine engine implementation',
     long_description=long_description,
     long_description_content_type='text/markdown',
