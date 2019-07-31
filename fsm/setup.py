@@ -1,4 +1,5 @@
-from setuptools import setup, find_packages
+from setuptools import setup
+from setuptools import find_packages
 from codecs import open
 from os import path
 
@@ -14,7 +15,9 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages= find_packages(
-      exclude=['contrib', 'docs', 'tests']
+      exclude=[
+        'fsm.core.tests'
+      ]
     ),
     install_requires=[],  # Optional
     python_requires='>=3',
